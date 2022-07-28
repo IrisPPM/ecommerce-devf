@@ -6,8 +6,8 @@ import {
   Route,
 } from "react-router-dom";
 import './App.css';
-import { Product,NotFound,Home,SingleProduct } from './Pages';
-import { NavBar } from './Shared/NavBar';
+import {NotFound,Home,SingleProduct, SharedItemLayout } from './Pages';
+import NavBar from './Shared/NavBar';
 
 const App = () => {
   return (
@@ -15,8 +15,10 @@ const App = () => {
     <NavBar/>
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='Products' element={<Product/>}/>
-      <Route path='SinleProduct' element={<SingleProduct/>}/>
+      <Route path='Product' element={<SharedItemLayout/>}>
+        <Route index element={< Home/>} />
+        <Route path= ':idItem' element={<SingleProduct/>} />
+      </Route>
 
       <Route path='*' element={<NotFound/>}/>
 
